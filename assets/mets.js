@@ -97,6 +97,44 @@
   if (document.fonts) document.fonts.ready.then(alignLast);
   alignLast();
 
+  // Menu and search: one open at a time, closed by Escape or by the desktop nav taking over
+  const menu = document.getElementById('menu');
+  const menuBtn = document.querySelector('.menu-btn');
+  const searchBtn = document.querySelector('.search-btn');
+  const searchBox = document.getElementById('site-search-box');
+
+  function setMenu(open) {
+    menu.setAttribute('data-open', String(open));
+    document.body.setAttribute('data-menu', open ? 'open' : 'closed');
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? menuBtn.dataset.close : menuBtn.dataset.open);
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+  }
+
+  function setSearch(open) {
+    header.setAttribute('data-search', open ? 'open' : 'closed');
+    searchBtn.setAttribute('aria-expanded', String(open));
+    if (open) searchBox.focus();
+  }
+
+  menuBtn.addEventListener('click', () => {
+    const open = menu.getAttribute('data-open') !== 'true';
+    setSearch(false);
+    setMenu(open);
+  });
+  searchBtn.addEventListener('click', () => {
+    const open = header.getAttribute('data-search') !== 'open';
+    setMenu(false);
+    setSearch(open);
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  addEventListener('keydown', e => {
+    if (e.key === 'Escape') { setMenu(false); setSearch(false); }
+  });
+  addEventListener('resize', () => {
+    if (getComputedStyle(menuBtn).display === 'none') setMenu(false);
+  });
+
   let ticking = false;
   function frame() {
     ticking = false;
