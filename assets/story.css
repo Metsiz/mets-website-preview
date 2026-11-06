@@ -1,0 +1,46 @@
+/* The Story page: Mets changes on top of Liam's about page. */
+
+.page-about .ab-body p + p { margin-top: 1.1em; }
+
+.story-aka { margin: 12px 0 0; }
+
+/* Banner: Aaron's crop (2000 x 932), the words sit high on the black cloth, clear of the stones,
+   and the shade stays on the cloth so the diamonds keep their sparkle */
+@media (min-width: 769px) {
+  .page-about .ab-open { min-height: min(46.6vw, 100vh); align-items: flex-start; }
+  .page-about .ab-open .band-content { width: 100%; padding-top: calc(var(--hdr-h) + clamp(16px, 3vw, 56px)); padding-bottom: 0; }
+  .page-about .ab-open .frame-max { max-width: none; margin-left: 0; margin-right: 0; padding-left: clamp(0px, 1.5vw, 32px); }
+  .page-about .ab-open h1 { max-width: none; font-size: clamp(2.6rem, 4.4vw, 5.4rem); }
+  .page-about .ab-open .story-aka { font-size: clamp(1.4rem, 2.2vw, 2.7rem); }
+  .page-about .ab-open::before,
+  .page-about .ab-open::after {
+    background: linear-gradient(115deg, rgba(20, 18, 16, .4) 0%, rgba(20, 18, 16, .15) 30%, rgba(20, 18, 16, 0) 42%);
+  }
+}
+
+/* Phone: the words first on warm black, then a square crop of the banner with the ring and all five stones */
+@media (max-width: 768px) {
+  .page-about .ab-open { display: flex; flex-direction: column; min-height: 0; background: #141210; }
+  .page-about .ab-open .band-content { order: 1; position: relative; width: 100%; padding-top: calc(var(--hdr-h) + 24px); padding-bottom: 24px; }
+  .page-about .ab-open .band-media { order: 2; position: relative; inset: auto; z-index: 0; width: 100%; height: auto; aspect-ratio: 1 / 1; overflow: hidden; }
+  .page-about .ab-open .band-media img { position: absolute; inset: 0; width: 100%; height: 100%; transform: none; }
+  .page-about .ab-open::before,
+  .page-about .ab-open::after { background: none; }
+}
+
+/* The Mets mark: a thin rhombus outline with the M inside. Liam's CSS would fill every path solid */
+.page-about .ab-aim .mark { width: auto; height: auto; }
+.page-about .ab-aim .mark svg { display: block; width: auto; height: 96px; margin-left: -14px; }
+.page-about .ab-aim .mark svg path:first-child { fill: none; }
+.page-about .ab-aim .mark svg path:last-child { fill: #C9A06A; }
+
+/* The chapters stack beside Aaron's image, in the spot Liam's wave had */
+.story-chapters { margin: clamp(24px, 3vw, 40px) 0; }
+.story-chapter {
+  padding: clamp(24px, 3vw, 40px) 0;
+  border-top: 1px solid rgba(237, 231, 220, .22);
+}
+.story-chapter h2 { margin: 0 0 16px; }
+.story-chapter .quiet { max-width: 36rem; }
+.story-chapter .quiet p { margin: 0; }
+.story-chapter .quiet p + p { margin-top: 1.1em; }

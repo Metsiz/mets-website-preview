@@ -1,0 +1,50 @@
+/* The design process page: Mets changes on top of Liam's page. */
+
+/* Step 2's CAD render is on white: multiply it into the bone ground so there is no white box */
+.page-process #step-2 .frame { background: transparent; }
+.page-process #step-2 img { mix-blend-mode: multiply; }
+
+/* Closing banner (PROCESS BANNER 1): the words sit in the middle of the black cloth on the left,
+   so the shade can be light and warm black, not brown */
+.page-process .dp-five { align-items: center; }
+/* Sits a little above centre: the cloth is widest at the top */
+.page-process .dp-five .band-content { padding-top: clamp(60px, 8vh, 100px); padding-bottom: clamp(120px, 18vh, 200px); }
+/* Pinned to the left gutter (not the centred page frame), so on a wide screen the words stay on the cloth */
+.page-process .dp-five .band-content { width: 100%; }
+.page-process .dp-five .dp-five-text { max-width: none; margin-left: 0; margin-right: 0; padding-left: clamp(0px, 2.5vw, 48px); }
+.page-process .dp-five .dp-five-text > * { max-width: 34rem; }
+.page-process .dp-five .dp-five-text > h2 { max-width: none; }
+.page-process .dp-five .lead { max-width: 26rem; }  /* the line stays on the cloth in PROCESS BANNER 3 */
+.page-process .dp-five::before {
+  background: linear-gradient(90deg, rgba(20, 18, 16, .45) 0%, rgba(20, 18, 16, .2) 36%, rgba(20, 18, 16, 0) 55%);
+}
+@media (max-width: 720px) {
+  /* On a phone the cloth is a thin strip: darken the left more so the words still read */
+  .page-process .dp-five::before {
+    background: linear-gradient(90deg, rgba(20, 18, 16, .75) 0%, rgba(20, 18, 16, .45) 60%, rgba(20, 18, 16, .2) 100%);
+  }
+}
+
+/* The closing banner's two buttons, side by side (stacked on a phone) */
+.page-process .dp-cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; }
+@media (max-width: 520px) {
+  .page-process .dp-cta-row { flex-direction: column; align-items: flex-start; }
+}
+
+/* Step 02: two more CAD renders, side by side under the words */
+.dp-cad-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; max-width: 460px; }
+.dp-cad-pair .figure { margin: 0; }
+.dp-cad-pair .frame { background: #fff; }
+/* Step 02: the pair bigger, the CAD-to-render image a touch smaller */
+.dp-cad-pair { max-width: 640px; gap: 18px; margin-top: 36px; }
+@media (min-width: 900px) {
+  #step-2 .dp-b { width: 82%; justify-self: end; }
+}
+/* Step 03: the second image is tall too, so keep it narrower under the words */
+@media (min-width: 900px) { #step-3 .dp-c { width: 62%; } }
+/* Step 02 pair: fill the text column, rings cropped tight */
+.dp-cad-pair { max-width: none; width: 100%; gap: 20px; }
+@media (min-width: 900px) { .dp-cad-pair { width: calc(100% + 220px); } }
+/* Step 02: the CAD images have white backgrounds; multiply them into the bone page so no box shows */
+#step-2 .frame { background: transparent !important; }
+#step-2 img { mix-blend-mode: multiply; }
